@@ -1,11 +1,10 @@
 <template>
   <div class="main" :style="{width: mainWidth}">
     <div class="view">
-      <iframe class="play-ground" ref="iframe" src="preview.html" frameborder="0"></iframe>
+      <iframe ref="iframe" src="preview.html" frameborder="0" ></iframe>
       <tabs
-        v-if="current.component"
-        :example="current.component.example"
-        :readme="current.component.readme">
+        :markdown="current.markdown"
+        :example="current.example">
       </tabs>
     </div>
   </div>
@@ -30,19 +29,24 @@
       this.updateIframe()
       this.listenChild()
       observeKeyEvents(this.$store)
+      this.resizeIframe();
+    },
+    beforeDestroy() {
+      console.log('remove');
+      clearTimeout(this.resizeTimeout);
     },
     computed: {
       ...mapGetters(['mainWidth']),
       current() {
         const {spot} = this.$route.query
-        const {scenario, component} = findScenario(this.$store.state.app.spots, this.$route.query) || {}
+        const {scenario, component, example, markdown} = findScenario(this.$store.state.app.spots, this.$route.query) || {}
 
         if (!component) {
           return {}
         }
 
         return {
-          spot, scenario, component
+          spot, scenario, component, example, markdown,
         }
       },
       currentScenario() {
@@ -66,6 +70,7 @@
         } else {
           document.title = 'Vue Play'
         }
+        this.resizeIframe();
         this.updateCurrentScenario(this.currentScenario)
         if (this.iframeLoaded) {
           this.postMessage()
@@ -73,8 +78,17 @@
           this.$refs.iframe.onload = () => {
             this.postMessage()
             this.iframeLoaded = true
+            this.resizeIframe();
           }
         }
+      },
+      resizeIframe() {
+        this.resizeTimeout = setTimeout(() => {
+          if(this.$refs.iframe.contentWindow.document.body) {
+            this.$refs.iframe.style.minHeight = 0;
+            this.$refs.iframe.style.minHeight = Math.max(this.$refs.iframe.contentWindow.document.body.scrollHeight + 10, 160) + 'px';
+          }
+        }, 10);
       },
       listenChild() {
         window.addEventListener('message', ({data}) => {

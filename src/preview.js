@@ -21,7 +21,7 @@ export default function () {
       const component = scenario && scenario.component
       if (component) {
         component.example = undefined
-        component.readme = undefined
+        component.markdown = undefined
       }
       return {
         current: component
@@ -59,10 +59,10 @@ function purify(spots) {
     result[name] = spots[name].map(spot => ({
       scenario: spot.scenario,
       component: {
-        example: spot.component.example,
         template: spot.component.template,
-        readme: spot.component.readme
-      }
+      },
+      example: spot.example,
+      markdown: spot.markdown,
     }))
   }
   return result

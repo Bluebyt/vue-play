@@ -2,6 +2,9 @@ import Vue from 'vue'
 import {sync} from 'vuex-router-sync'
 import store from './store'
 import router from './router'
+import VueMarkdown from 'vue-markdown';
+
+Vue.component('vue-markdown', VueMarkdown);
 
 export default function ({spots = []} = {}) {
   store.registerModule('app', {

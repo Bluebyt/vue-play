@@ -183,6 +183,7 @@
     }
     h1 {
       margin: 0;
+      padding: 0;
       font-weight: 300;
       text-align: center;
       height: $logoHeight;
@@ -192,7 +193,6 @@
       cursor: pointer;
       box-shadow: 0 0 1px #bfbfbf;
       border-bottom: 1px solid rgba(255, 255, 255, 0.46);
-      font-family: cursive, sans-serif;
       &:hover {
         color: #42b983;
       }
@@ -219,5 +219,9 @@
       height: calc(100% - $logoHeight - $searchHeight);
       overflow: auto;
     }
+  }
+  ul {
+    margin: 0;
+    padding: 0;
   }
 </style>

@@ -15,7 +15,7 @@ const play = spot => {
   }
 
   return {
-    add(scenario, value) {
+    add(scenario, value, readme, example) {
       let component = value
       if (typeof value === 'string') {
         component = {template: value}
@@ -44,7 +44,9 @@ const play = spot => {
       spots[displayName] = spots[displayName] || []
       spots[displayName].push({
         scenario,
-        component
+        component,
+        markdown: readme,
+        example: example,
       })
       return this
     },

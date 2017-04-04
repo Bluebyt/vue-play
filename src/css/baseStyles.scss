@@ -1,0 +1,68 @@
+body {
+  font-family: 'HelveticaNeueLTStdCondensed', 'HelveticaNeue', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 500;
+  color: rgb(44, 44, 44);
+
+  // default mobile font-size
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  margin: 0;
+}
+
+h1, .h1 {
+  font-size: 3.9rem;
+  line-height: 4rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+h2, .h2 {
+  font-size: 3.4rem;
+  line-height: 3.5rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+h3, .h3 {
+  font-size: 2.9rem;
+  line-height: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  letter-spacing: 0.03rem;
+}
+
+h4, .h4 {
+  font-size: 2.4rem;
+  line-height: 2.5rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  letter-spacing: 0.05rem;
+}
+
+h5, .h5 {
+  font-size: 1.9rem;
+  line-height: 2rem;
+  letter-spacing: -.05rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  letter-spacing: 0.06rem;
+}
+
+h6, .h6 {
+  font-size: 1.4rem;
+  line-height: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  letter-spacing: 0.06rem;
+}
+
+ol, ul, p, .p {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  letter-spacing: 0.042rem;
+}
