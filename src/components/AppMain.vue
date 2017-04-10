@@ -1,11 +1,15 @@
 <template>
   <div class="main" :style="{width: mainWidth}">
     <div class="view">
-      <iframe ref="iframe" src="preview.html" frameborder="0" ></iframe>
-      <tabs
-        :markdown="current.markdown"
-        :example="current.example">
-      </tabs>
+      <div class="iframe-wrapper">
+        <iframe ref="iframe" src="preview.html" class="iframe" frameborder="0" :style="style"></iframe>
+      </div>
+      <div class='description-content'>
+        <tabs
+          :markdown="markdown"
+          :example="example">
+        </tabs>
+      </div>
     </div>
   </div>
 </template>
@@ -36,6 +40,17 @@
       clearTimeout(this.resizeTimeout);
     },
     computed: {
+      markdown() {
+        return this.getScenarioProperty('markdown');
+      },
+      example() {
+        return this.getScenarioProperty('example');
+      },
+      style() {
+        const style = this.getScenarioProperty('style');
+        console.log(style);
+        return style;
+      },
       ...mapGetters(['mainWidth']),
       current() {
         const {spot} = this.$route.query
@@ -57,6 +72,12 @@
       }
     },
     methods: {
+      getScenarioProperty(name) {
+        const {config} = findScenario(this.$store.state.app.spots, this.$route.query) || {}
+        if (config) {
+          return config[name];
+        }
+      },
       ...mapActions(['addLog', 'updateCurrentScenario', 'setSpots']),
       postMessage() {
         this.$refs.iframe.contentWindow.postMessage({
@@ -86,7 +107,7 @@
         this.resizeTimeout = setTimeout(() => {
           if(this.$refs.iframe.contentWindow.document.body) {
             this.$refs.iframe.style.minHeight = 0;
-            this.$refs.iframe.style.minHeight = Math.max(this.$refs.iframe.contentWindow.document.body.scrollHeight + 10, 160) + 'px';
+            this.$refs.iframe.style.minHeight = Math.max(this.$refs.iframe.contentWindow.document.body.scrollHeight, 10) + 'px';
           }
         }, 10);
       },
@@ -143,5 +164,25 @@
   }
   .play-tabs {
     background-color: white;
+  }
+  .view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .description-content {
+    width: 100%;
+  }
+  .iframe-wrapper {
+    width: 100%;
+    background-color: rgb(244, 244, 244);
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    overflow-y: auto;
+  }
+  .iframe {
+    width: 100%;
   }
 </style>

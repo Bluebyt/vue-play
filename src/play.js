@@ -1,7 +1,11 @@
 const DEV = process.env.NODE_ENV === 'development'
 
 let spots = {}
-
+const initalConfig = {
+  markdown: '',
+  example: '',
+  style: '',
+}
 const play = spot => {
   const isSpotComponent = typeof spot === 'object'
 
@@ -15,14 +19,14 @@ const play = spot => {
   }
 
   return {
-    add(scenario, value, readme, example) {
+    add(scenario, value, config = initalConfig) {
       let component = value
       if (typeof value === 'string') {
         component = {template: value}
       } else if (typeof value === 'function') {
         component = {render: value}
       }
-      component.example = component.example || component.template
+      component.example = config.example || component.template
 
       // register spot component inscenario component
       if (isSpotComponent) {
@@ -45,8 +49,7 @@ const play = spot => {
       spots[displayName].push({
         scenario,
         component,
-        markdown: readme,
-        example: example,
+        config,
       })
       return this
     },

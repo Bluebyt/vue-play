@@ -64,26 +64,31 @@ module.exports =
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 56);
+/******/ 	return __webpack_require__(__webpack_require__.s = 68);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 11:
+/***/ 16:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_C_Projects_Vue_vue_play_node_modules_babel_runtime_helpers_typeof__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_C_Projects_Vue_vue_play_node_modules_babel_runtime_helpers_typeof___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_C_Projects_Vue_vue_play_node_modules_babel_runtime_helpers_typeof__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "play", function() { return play; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSpots", function() { return getSpots; });
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 var DEV = "production" === 'development';
 
 var spots = {};
-
+var initalConfig = {
+  markdown: '',
+  example: '',
+  style: ''
+};
 var play = function play(spot) {
-  var isSpotComponent = (typeof spot === 'undefined' ? 'undefined' : _typeof(spot)) === 'object';
+  var isSpotComponent = (typeof spot === 'undefined' ? 'undefined' : __WEBPACK_IMPORTED_MODULE_0_C_Projects_Vue_vue_play_node_modules_babel_runtime_helpers_typeof___default()(spot)) === 'object';
 
   var componentName = void 0;
   var _displayName = void 0;
@@ -95,14 +100,16 @@ var play = function play(spot) {
   }
 
   return {
-    add: function add(scenario, value, readme, example) {
+    add: function add(scenario, value) {
+      var config = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : initalConfig;
+
       var component = value;
       if (typeof value === 'string') {
         component = { template: value };
       } else if (typeof value === 'function') {
         component = { render: value };
       }
-      component.example = component.example || component.template;
+      component.example = config.example || component.template;
 
       // register spot component inscenario component
       if (isSpotComponent) {
@@ -125,8 +132,7 @@ var play = function play(spot) {
       spots[_displayName].push({
         scenario: scenario,
         component: component,
-        markdown: readme,
-        example: example
+        config: config
       });
       return this;
     },
@@ -162,10 +168,66 @@ var getSpots = function getSpots() {
 
 /***/ }),
 
-/***/ 56:
+/***/ 30:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(11);
+module.exports = { "default": __webpack_require__(55), __esModule: true };
+
+/***/ }),
+
+/***/ 31:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(56), __esModule: true };
+
+/***/ }),
+
+/***/ 33:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+
+var _iterator = __webpack_require__(31);
+
+var _iterator2 = _interopRequireDefault(_iterator);
+
+var _symbol = __webpack_require__(30);
+
+var _symbol2 = _interopRequireDefault(_symbol);
+
+var _typeof = typeof _symbol2.default === "function" && typeof _iterator2.default === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof _symbol2.default === "function" && obj.constructor === _symbol2.default && obj !== _symbol2.default.prototype ? "symbol" : typeof obj; };
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.default) === "symbol" ? function (obj) {
+  return typeof obj === "undefined" ? "undefined" : _typeof(obj);
+} : function (obj) {
+  return obj && typeof _symbol2.default === "function" && obj.constructor === _symbol2.default && obj !== _symbol2.default.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof(obj);
+};
+
+/***/ }),
+
+/***/ 55:
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/symbol");
+
+/***/ }),
+
+/***/ 56:
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/symbol/iterator");
+
+/***/ }),
+
+/***/ 68:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(16);
 
 
 /***/ })

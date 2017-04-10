@@ -64,31 +64,41 @@ module.exports =
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 57);
+/******/ 	return __webpack_require__(__webpack_require__.s = 69);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 1:
-/***/ (function(module, exports) {
+/***/ 0:
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = require("vue");
+module.exports = { "default": __webpack_require__(10), __esModule: true };
 
 /***/ }),
 
-/***/ 12:
+/***/ 10:
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/object/keys");
+
+/***/ }),
+
+/***/ 17:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_query_string__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_query_string___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_query_string__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_find_scenario__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_key_events__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__play__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__play___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__play__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_C_Projects_Vue_vue_play_node_modules_babel_runtime_core_js_json_stringify__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_C_Projects_Vue_vue_play_node_modules_babel_runtime_core_js_json_stringify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_C_Projects_Vue_vue_play_node_modules_babel_runtime_core_js_json_stringify__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_query_string__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_query_string___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_query_string__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_find_scenario__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_key_events__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__play__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__play___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__play__);
+
 
 
 
@@ -96,24 +106,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
-  var spots = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__play__["getSpots"])();
-  var query = __WEBPACK_IMPORTED_MODULE_1_query_string___default.a.parse(location.search);
+  var spots = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__play__["getSpots"])();
+  var query = __WEBPACK_IMPORTED_MODULE_2_query_string___default.a.parse(location.search);
 
-  __WEBPACK_IMPORTED_MODULE_0_vue___default.a.prototype.$log = function (data) {
+  __WEBPACK_IMPORTED_MODULE_1_vue___default.a.prototype.$log = function (data) {
     parent.postMessage({
       type: 'ADD_LOG',
       payload: data
     }, location.origin);
   };
-  return new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
+  return new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
     el: '#app',
     data: function data() {
-      var scenario = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_find_scenario__["a" /* default */])(spots, query);
+      var scenario = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_find_scenario__["a" /* default */])(spots, query);
       var component = scenario && scenario.component;
-      if (component) {
-        component.example = undefined;
-        component.markdown = undefined;
-      }
       return {
         current: component
       };
@@ -125,7 +131,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var data = _ref.data;
 
         if (data.type === 'UPDATE_ROUTE') {
-          var scenario = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__utils_find_scenario__["a" /* default */])(spots, data.payload);
+          var scenario = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_find_scenario__["a" /* default */])(spots, data.payload);
           if (scenario) {
             _this.current = scenario.component;
           }
@@ -134,12 +140,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       window.onkeydown = function (e) {
         parent.postMessage({
           type: 'APPLY_SHORTCUT',
-          payload: JSON.stringify(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3__utils_key_events__["a" /* parseKey */])(e))
+          payload: __WEBPACK_IMPORTED_MODULE_0_C_Projects_Vue_vue_play_node_modules_babel_runtime_core_js_json_stringify___default()(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__utils_key_events__["a" /* parseKey */])(e))
         }, location.origin);
       };
       parent.postMessage({
         type: 'SET_SPOTS',
-        payload: JSON.stringify(purify(spots))
+        payload: __WEBPACK_IMPORTED_MODULE_0_C_Projects_Vue_vue_play_node_modules_babel_runtime_core_js_json_stringify___default()(purify(spots))
       }, location.origin);
     },
     render: function render(h) {
@@ -157,8 +163,7 @@ function purify(spots) {
         component: {
           template: spot.component.template
         },
-        example: spot.example,
-        markdown: spot.markdown
+        config: spot.config
       };
     });
   }
@@ -168,10 +173,20 @@ function purify(spots) {
 /***/ }),
 
 /***/ 3:
+/***/ (function(module, exports) {
+
+module.exports = require("vue");
+
+/***/ }),
+
+/***/ 5:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_C_Projects_Vue_vue_play_node_modules_babel_runtime_core_js_object_keys__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_C_Projects_Vue_vue_play_node_modules_babel_runtime_core_js_object_keys___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_C_Projects_Vue_vue_play_node_modules_babel_runtime_core_js_object_keys__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return validShortcuts; });
+
 var model = {
   actions: {
     cmdShiftK: function cmdShiftK(_ref) {
@@ -203,11 +218,18 @@ var model = {
 };
 
 /* harmony default export */ __webpack_exports__["b"] = (model);
-var validShortcuts = Object.keys(model.actions);
+var validShortcuts = __WEBPACK_IMPORTED_MODULE_0_C_Projects_Vue_vue_play_node_modules_babel_runtime_core_js_object_keys___default()(model.actions);
 
 /***/ }),
 
-/***/ 4:
+/***/ 51:
+/***/ (function(module, exports) {
+
+module.exports = require("./play");
+
+/***/ }),
+
+/***/ 6:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -223,25 +245,26 @@ var validShortcuts = Object.keys(model.actions);
 
 /***/ }),
 
-/***/ 43:
-/***/ (function(module, exports) {
-
-module.exports = require("./play");
-
-/***/ }),
-
-/***/ 49:
+/***/ 61:
 /***/ (function(module, exports) {
 
 module.exports = require("query-string");
 
 /***/ }),
 
-/***/ 5:
+/***/ 69:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(17);
+
+
+/***/ }),
+
+/***/ 7:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_store_modules_shortcuts__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_store_modules_shortcuts__ = __webpack_require__(5);
 /* unused harmony export isModifierPressed */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return parseKey; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return executeShortcut; });
@@ -305,11 +328,17 @@ var observeKeyEvents = function observeKeyEvents(store) {
 
 /***/ }),
 
-/***/ 57:
+/***/ 8:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(12);
+module.exports = { "default": __webpack_require__(9), __esModule: true };
 
+/***/ }),
+
+/***/ 9:
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/json/stringify");
 
 /***/ })
 

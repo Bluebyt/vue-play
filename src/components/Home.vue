@@ -22,6 +22,3 @@
 </script>
 
 <style src="../css/main.css"></style>
-<style src="../css/normalize.scss"></style>
-<style src="../css/reset.scss"></style>
-<style src="../css/baseStyles.scss"></style>

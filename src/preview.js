@@ -19,10 +19,6 @@ export default function () {
     data() {
       const scenario = findScenario(spots, query)
       const component = scenario && scenario.component
-      if (component) {
-        component.example = undefined
-        component.markdown = undefined
-      }
       return {
         current: component
       }
@@ -61,8 +57,7 @@ function purify(spots) {
       component: {
         template: spot.component.template,
       },
-      example: spot.example,
-      markdown: spot.markdown,
+      config: spot.config,
     }))
   }
   return result

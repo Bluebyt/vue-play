@@ -1,13 +1,105 @@
+
+// Use border-box as the default box sizing method.
+*, *::before, *::after { box-sizing: border-box; }
+
+// -----------------------------------------------------------------------------
+// Default body and font styling
+
 body {
   font-family: 'HelveticaNeueLTStdCondensed', 'HelveticaNeue', 'Helvetica', 'Arial', sans-serif;
   font-weight: 500;
-  color: rgb(44, 44, 44);
+  color: rgb(81, 81, 81);
 
-  // default mobile font-size
-  font-size: 1.2rem;
-  line-height: 1.6rem;
-
+  line-height: 2rem;
+  letter-spacing: 0.042rem;
 }
+
+// -----------------------------------------------------------------------------
+// Lists
+
+li {
+    margin-top: 0.5rem;
+}
+
+
+// -----------------------------------------------------------------------------
+// Horizontal rules
+
+hr {
+  border: 0;
+  border-top: 0.1rem solid rgb(202, 202, 202);
+}
+
+
+// -----------------------------------------------------------------------------
+// Images
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+// -----------------------------------------------------------------------------
+// Quotes
+
+blockquote {
+  background-color: rgb(209, 242, 250);
+  border: 0.1rem solid rgb(162, 229, 246);
+  border-radius: 0.5rem;
+  margin-left: 0;
+  margin-right: 0;
+  font-style: italic;
+  color: rgb(14, 114, 139);
+
+  padding: 0.5rem 3rem;
+}
+
+
+// -----------------------------------------------------------------------------
+// Code
+
+code {
+  display: inline-block;
+  background-color: rgb(209, 242, 250);
+  border: 0.1rem solid rgb(162, 229, 246);
+  width: auto;
+  padding: 0 0.2rem;
+  text-indent: 0;
+  border-radius: 0.3rem;
+}
+
+// Add padding to codeblocks
+pre > code {
+    padding: 1rem 2rem;
+}
+
+
+// -----------------------------------------------------------------------------
+// Tables
+
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+table {
+  border: 0.1rem solid rgb(202, 202, 202);
+}
+
+th {
+  border-bottom: 0.1rem solid rgb(202, 202, 202);
+  padding: 1rem 2rem;
+}
+
+td {
+  padding: 0.5rem 2rem;
+}
+
+
+// -----------------------------------------------------------------------------
+// Headlines
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
@@ -17,21 +109,20 @@ h1, h2, h3, h4, h5, h6 {
 h1, .h1 {
   font-size: 3.9rem;
   line-height: 4rem;
-  padding-top: 3rem;
   padding-bottom: 3rem;
+  letter-spacing: 0;
 }
 
 h2, .h2 {
   font-size: 3.4rem;
   line-height: 3.5rem;
-  padding-top: 3rem;
   padding-bottom: 3rem;
+  letter-spacing: 0;
 }
 
 h3, .h3 {
   font-size: 2.9rem;
   line-height: 3rem;
-  padding-top: 2rem;
   padding-bottom: 2rem;
   letter-spacing: 0.03rem;
 }
@@ -39,7 +130,6 @@ h3, .h3 {
 h4, .h4 {
   font-size: 2.4rem;
   line-height: 2.5rem;
-  padding-top: 2rem;
   padding-bottom: 2rem;
   letter-spacing: 0.05rem;
 }
@@ -48,21 +138,53 @@ h5, .h5 {
   font-size: 1.9rem;
   line-height: 2rem;
   letter-spacing: -.05rem;
-  padding-top: 1rem;
   padding-bottom: 1rem;
-  letter-spacing: 0.06rem;
 }
 
 h6, .h6 {
   font-size: 1.4rem;
   line-height: 1.5rem;
-  padding-top: 1rem;
   padding-bottom: 1rem;
-  letter-spacing: 0.06rem;
 }
 
-ol, ul, p, .p {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  letter-spacing: 0.042rem;
+// ---------------------------------------------------------------------------
+// Lists
+ol,
+ul {
+  list-style: none;
+  margin-left: 0;
+
+  padding-left: 3rem;
+  text-indent: -3rem;
+}
+
+// Prepare the ::before elements for displaying numerals and bullet points.
+li::before {
+  display: inline-block;
+  text-indent: 0;
+}
+
+// Styling of the bullet-points.
+ul > li::before {
+  content: "";
+  border-radius: 1em;
+  background-color: rgb(23, 190, 232);
+  width: 0.4em;
+  height: 0.4em;
+  vertical-align: middle;
+  margin-right: calc(0.7rem + 0.4em);
+}
+
+// Reset the list counter on each ol element
+ol { counter-reset: item; }
+
+// Styling of the orderd list numerals
+ol > li::before {
+  content: counter(item) ".";
+  counter-increment: item;
+  color: rgb(23, 190, 232);
+  padding-right: 0.7rem;
+
+  // Set the width of the number to at least 4 characters
+  min-width: 4ch;
 }
