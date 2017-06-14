@@ -6,6 +6,7 @@
       </div>
       <div class='description-content'>
         <tabs
+          :layout="layout"
           :markdown="markdown"
           :example="example">
         </tabs>
@@ -42,6 +43,9 @@
     computed: {
       markdown() {
         return this.getScenarioProperty('markdown');
+      },
+      layout() {
+        return this.getScenarioProperty('layout');
       },
       example() {
         return this.getScenarioProperty('example');
@@ -164,18 +168,52 @@
   }
   .play-tabs {
     background-color: white;
+    height: 100%;
   }
   .view {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
+    @media (min-width: 1300px) {
+      flex-direction: row;
+    }
   }
   .description-content {
     width: 100%;
+    height: 60%;
+    @media (min-width: 1300px) {
+      height: 100%;
+      width: 55%;
+    }
+    @media (min-width: 1400px) {
+      width: 61.66%;
+    }
+    @media (min-width: 1600px) {
+      width: 68.33%;
+    }
+    @media (min-width: 1800px) {
+      width: 75%;
+    }
   }
   .iframe-wrapper {
     width: 100%;
-    background-color: rgb(244, 244, 244);
+    min-height: 40%;
+    @media (min-width: 1300px) {
+      width: 45%;
+      min-height: 100%;
+    }
+    @media (min-width: 1400px) {
+      width: 41.67%;
+    }
+    @media (min-width: 1600px) {
+      width: 38.33%;
+    }
+    @media (min-width: 1800px) {
+      width: 35%;
+    }
+    padding: 10px;
+    height: 100%;
+    background-color: rgba(200, 200, 200, 0.3);
     display: flex;
     justify-content: center;
     padding-top: 20px;

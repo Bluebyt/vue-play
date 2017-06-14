@@ -3,6 +3,7 @@ const DEV = process.env.NODE_ENV === 'development'
 let spots = {}
 const initalConfig = {
   markdown: '',
+  layout: '',
   example: '',
   style: '',
 }

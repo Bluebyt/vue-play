@@ -7,9 +7,9 @@ module.exports =
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -475,6 +475,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -504,6 +505,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   computed: __WEBPACK_IMPORTED_MODULE_0_C_Projects_Vue_vue_play_node_modules_babel_runtime_helpers_extends___default()({
     markdown: function markdown() {
       return this.getScenarioProperty('markdown');
+    },
+    layout: function layout() {
+      return this.getScenarioProperty('layout');
     },
     example: function example() {
       return this.getScenarioProperty('example');
@@ -927,6 +931,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -936,6 +959,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   name: 'console',
   props: {
     example: {
+      type: String
+    },
+    layout: {
       type: String
     },
     markdown: {
@@ -1704,6 +1730,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "description-content"
   }, [_c('tabs', {
     attrs: {
+      "layout": _vm.layout,
       "markdown": _vm.markdown,
       "example": _vm.example
     }
@@ -1943,7 +1970,43 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "d": "M16 7 C16 7 9 1 2 6 L2 28 C9 23 16 28 16 28 16 28 23 23 30 28 L30 6 C23 1 16 7 16 7 Z M16 7 L16 28"
     }
-  })]), _vm._v("\n        Styleguide\n      ")]) : _vm._e(), _vm._v(" "), (_vm.example) ? _c('span', {
+  })]), _vm._v("\n        Styleguide\n      ")]) : _vm._e(), _vm._v(" "), (_vm.layout) ? _c('span', {
+    staticClass: "title",
+    class: {
+      active: _vm.active === 'layout'
+    },
+    on: {
+      "mousedown": function($event) {
+        $event.stopPropagation();
+      },
+      "click": function($event) {
+        _vm.updateActiveTab('layout')
+      }
+    }
+  }, [_c('svg', {
+    attrs: {
+      "id": "i-code",
+      "width": "32",
+      "height": "32",
+      "viewBox": "0 0 50 50",
+      "fill": "none",
+      "stroke": "currentcolor",
+      "stroke-linecap": "round",
+      "stroke-linejoin": "round"
+    }
+  }, [_c('path', {
+    staticStyle: {
+      "text-indent": "0",
+      "text-align": "start",
+      "line-height": "normal",
+      "text-transform": "none",
+      "block-progression": "tb",
+      "-inkscape-font-specification": "Bitstream Vera Sans"
+    },
+    attrs: {
+      "d": "M 9.9375 0.53125 L 9.21875 1.21875 L 1.21875 9.21875 L 0.53125 9.9375 L 1.21875 10.65625 L 16.84375 26.28125 L 4.3125 38.8125 A 1.0001 1.0001 0 0 0 4.03125 39.25 L 2.03125 46.75 A 1.0001 1.0001 0 0 0 3.25 47.96875 L 10.75 45.96875 A 1.0001 1.0001 0 0 0 11.1875 45.6875 L 45.75 11.125 C 45.745 11.129 46.5625 10.3125 46.5625 10.3125 C 48.4635 8.4115 48.4615 5.3375 46.5625 3.4375 C 44.6595 1.5355 41.5885 1.5375 39.6875 3.4375 L 38.875 4.25 L 26.28125 16.84375 L 10.65625 1.21875 L 9.9375 0.53125 z M 9.9375 3.375 L 11.5625 5 L 10.28125 6.28125 L 11.71875 7.71875 L 13 6.4375 L 14.5625 8 L 12.28125 10.28125 L 13.71875 11.71875 L 16 9.4375 L 17.5625 11 L 16.28125 12.28125 L 17.71875 13.71875 L 19 12.4375 L 20.5625 14 L 18.28125 16.28125 L 19.71875 17.71875 L 22 15.4375 L 23.5625 17 L 22.28125 18.28125 L 23.5625 19.5625 L 18.28125 24.84375 L 3.375 9.9375 L 9.9375 3.375 z M 40.28125 5.65625 L 44.34375 9.71875 L 9.96875 44.09375 L 5.90625 40.03125 L 40.28125 5.65625 z M 34 24.59375 L 33.28125 25.28125 L 31.28125 27.28125 L 32.71875 28.71875 L 34 27.4375 L 35.5625 29 L 33.28125 31.28125 L 34.71875 32.71875 L 37 30.4375 L 38.5625 32 L 37.28125 33.28125 L 38.71875 34.71875 L 40 33.4375 L 41.5625 35 L 39.28125 37.28125 L 40.71875 38.71875 L 43 36.4375 L 44.5625 38 L 43.28125 39.28125 L 44.71875 40.71875 L 46 39.4375 L 46.625 40.0625 L 40.0625 46.625 L 26 32.59375 L 24.59375 34 L 39.34375 48.78125 L 40.0625 49.46875 L 40.78125 48.78125 L 48.78125 40.78125 L 49.46875 40.0625 L 48.78125 39.34375 L 34 24.59375 z"
+    }
+  })]), _vm._v("\n        Layout\n      ")]) : _vm._e(), _vm._v(" "), (_vm.example) ? _c('span', {
     staticClass: "title",
     class: {
       active: _vm.active === 'example'
@@ -2038,13 +2101,23 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     ref: "body",
     staticClass: "tab-body",
     style: ({
-      padding: '10px',
       minHeight: _vm.tabHeight + 'px'
     })
   }, [_c('vue-markdown', {
-    staticClass: "markdown-styled",
+    staticClass: "markdown-body",
     attrs: {
       "source": _vm.markdown
+    }
+  })], 1) : _vm._e(), _vm._v(" "), (_vm.active === 'layout') ? _c('div', {
+    ref: "body",
+    staticClass: "tab-body",
+    style: ({
+      minHeight: _vm.tabHeight + 'px'
+    })
+  }, [_c('vue-markdown', {
+    staticClass: "markdown-body",
+    attrs: {
+      "source": _vm.layout
     }
   })], 1) : _vm._e(), _vm._v(" "), (_vm.active === 'example') ? _c('div', {
     ref: "body",

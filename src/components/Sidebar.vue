@@ -153,19 +153,20 @@
         .component-name {
           cursor: pointer;
           margin: 10px;
-          margin-bottom: 5px;
+          margin-bottom: 0px;
           padding-bottom: 10px;
           border-bottom: 1px solid #ececec;
         }
         .nav-scenarios {
           display: none;
           padding-left: 0;
+          background-color: rgba(200, 200, 200, 0.3);
           .nav-scenario {
             a {
               font-size: 14px;
               display: block;
               cursor: pointer;
-              padding: 5px 10px;
+              padding: 5px 15px;
               padding-left: 20px;
               text-decoration: none;
               color: #666;
