@@ -293,7 +293,7 @@
     display: flex;
     justify-content: center;
     height: calc(100% - 47px);
-    overflow-y: scroll;
+    overflow-y: auto;
     padding: 20px 0;
   }
 </style>
