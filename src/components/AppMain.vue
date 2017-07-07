@@ -1,6 +1,6 @@
 <template>
   <div class="main" :style="{width: mainWidth}">
-    <div class="view">
+    <div class="view" :class="orientation">
       <div class="iframe-wrapper">
         <iframe ref="iframe" src="preview.html" class="iframe" frameborder="0" :style="style"></iframe>
       </div>
@@ -54,6 +54,9 @@
         const style = this.getScenarioProperty('style');
         console.log(style);
         return style;
+      },
+      orientation() {
+        return this.getScenarioProperty('orientation') ? this.getScenarioProperty('orientation') : 'default';
       },
       ...mapGetters(['mainWidth']),
       current() {
@@ -170,57 +173,79 @@
     background-color: white;
     height: 100%;
   }
+
+  /* universal styles for .view and .iframe-wrapper */
   .view {
     display: flex;
     align-items: center;
-    flex-direction: column;
-    @media (min-width: 1300px) {
-      flex-direction: row;
-    }
-  }
-  .description-content {
-    width: 100%;
-    height: 60%;
-    @media (min-width: 1300px) {
-      height: 100%;
-      width: 55%;
-    }
-    @media (min-width: 1400px) {
-      width: 61.66%;
-    }
-    @media (min-width: 1600px) {
-      width: 68.33%;
-    }
-    @media (min-width: 1800px) {
-      width: 75%;
-    }
+    justify-content: center;
   }
   .iframe-wrapper {
-    width: 100%;
-    min-height: 40%;
-    @media (min-width: 1300px) {
-      width: 45%;
-      min-height: 100%;
-    }
-    @media (min-width: 1400px) {
-      width: 41.67%;
-    }
-    @media (min-width: 1600px) {
-      width: 38.33%;
-    }
-    @media (min-width: 1800px) {
-      width: 35%;
-    }
-    padding: 10px;
-    height: 100%;
+    padding: 20px 10px;
     background-color: rgba(200, 200, 200, 0.3);
     display: flex;
     justify-content: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    flex-grow: 1;
     overflow-y: auto;
+  }
+  .description-content {
+    flex-grow: 1;
   }
   .iframe {
     width: 100%;
   }
+
+  /* default view (if no orientation is specified) */
+  /* show colums for screen-width > 1300px */
+  /* show rows for screen-width < 1300px */
+  .view.default {
+    flex-direction: column;
+    @media (min-width: 1300px) {
+      flex-direction: row;
+    }
+
+  }
+  .view.default .iframe-wrapper {
+    min-height: 50%; 
+    width: 100%;
+    @media (min-width: 1300px) {
+      height: 100%;
+    }
+  }
+  .view.default .description-content {
+    width: 100%;
+    @media (min-width: 1300px) {
+      height: 100%;
+      max-width: 50%;
+    }
+  }
+
+  /* forced horizontal view */
+  .view.horizontal {
+    flex-direction: column;
+  }
+
+  .view.horizontal .description-content {
+    width: 100%;
+    height: 40%;
+  }
+
+  .view.horizontal .iframe-wrapper {
+    width: 100%;
+  }
+
+  /* forced vertical view */
+  .view.vertical {
+    flex-direction: row;
+  }
+
+  .view.vertical .description-content {
+    height: 100%;
+    max-width: 50%;
+  }
+
+  .view.vertical .iframe-wrapper {
+    height: 100%;
+  }
+
 </style>
